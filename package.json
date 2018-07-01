@@ -1,0 +1,24 @@
+{
+  "name": "drawit.tech",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "save": "^2.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chawlautsav/drawit.tech.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chawlautsav/drawit.tech/issues"
+  },
+  "homepage": "https://github.com/chawlautsav/drawit.tech#readme"
+}
