@@ -1,0 +1,41 @@
+nav li a:hover
+{
+  cursor: pointer;
+}
+.editor
+{
+	height: 550px;
+	width: 100%;
+}
+
+#output
+{
+  width: 100%;
+  height: 550px;
+  border: 1px solid #eaedef;
+}
+#go,#flag,#useflag
+{
+  cursor: pointer;
+}
+.slmodal:hover
+{
+	background-color: #f8f9fa;
+  cursor: pointer;
+}
+
+.potrait
+{
+  display: none;
+}
+@media screen and (max-width: 991px)
+{
+  .landscape
+  {
+    display: none;
+  }
+  .potrait
+  {
+    display: block;
+  }
+}

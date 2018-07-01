@@ -1,0 +1,205 @@
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+   
+   <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+
+  <title>Draw It</title>
+  <link rel="stylesheet" type="text/css" href="abc.css">
+  <link rel="icon" href="logo.png">
+  <style type="text/css">
+    #drawit
+    {
+      font-family: 'Righteous', cursive;
+      font-size: 26px;
+    }
+  </style>
+</head>
+<body>
+                                    <!--    NAVBAR START -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="http://codeshala.org/" target="new" data-placement="bottom"  data-toggle="popover" data-trigger="hover" data-content="Drawit is an online code editing platform, currently providing HTML,CSS and JavaScript support. Drawit is developed by Utsav Chawla and Aarti Vishnoi, under the guidance of Vipin Khushu.">
+        <pi id="drawit"> Draw It    </pi>
+        <img src="logo.png" style="width:30px; margin-top: -12px">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto"></ul>
+        <ul class="navbar-nav ">
+            <li class="nav-item active">
+              <a class="nav-link" href="https://chawlautsav.github.io/" target="new"><i class="fas fa-code"></i>&nbsp;New <span class="sr-only">(current)</span></a>
+            </li>&nbsp;
+            <li class="nav-item active">
+              <a class="nav-link" href="#" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="Feature currently not available."><i class="fas fa-save"></i>&nbsp;Save <span class="sr-only">(current)</span></a>
+            </li>&nbsp;
+            <li class="nav-item active">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#Login/Signup"><i class="fas fa-sign-in-alt"></i>&nbsp;Login/Signup</a>
+            </li>&nbsp;
+            <li class="nav-item active">
+               <a class="nav-link" href="#" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="Feature currently not available."><i class="fas fa-link"></i>&nbsp; Direct</a>
+            </li>&nbsp;&nbsp;&nbsp;
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle btn btn-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <i class="fas fa-columns"></i> Change View
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" onclick="view(21)"><as class="landscape"><i class="fas fa-align-left"></i>&nbsp;&nbsp; Left</as></a>
+                  <a class="dropdown-item" onclick="view(21)"><as class="potrait"><i class="fas fa-align-left"></i>&nbsp;&nbsp; Up</as></a>
+                  <a class="dropdown-item" onclick="view(1)"><as class="landscape"><i class="fas fa-align-right"></i>&nbsp;&nbsp;Right</as></a>
+                  <a class="dropdown-item" onclick="view(1)" ><as class="potrait"><i class="fas fa-align-right"></i>&nbsp;&nbsp;Down</as></a>  
+              </div>
+            </li>
+          </ul>
+        </div>
+  </nav>
+                                      <!--    NAVBAR CLOSE -->
+                                      <!--    EDITOR SELECTOR START -->
+  <ul class="nav nav-tabs bg-light " id="codeSelection">
+        &nbsp;
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#code_html">HTML</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#code_css">CSS</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#code_js">JavaScript</a></li>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li class="nav-item btn-success" ><a  class="nav-link" id="go" onclick="doIt()"> GO </a> </li>
+        <li class="nav-item ml-auto"><a class="nav-link" id="useflag" onclick="useflag()" data-toggle="tooltip" data-placement="bottom" title="Rollback to the last saved flag."></a></li>
+        <li class="nav-item btn-info"><a  class="nav-link" id="flag" onclick="flag()" data-toggle="tooltip" data-placement="bottom" title="Save Flag"> <i class="far fa-flag"></i></a></li>&nbsp;
+        
+  </ul>
+                                    <!--    EDITOR SELECTOR CLOSE -->
+
+
+                                      <!--    MAIN BODY START -->
+  <div class="row no-gutters" >
+    <div class="col-lg-3 order-1" id="col3" >
+      <div class="tab-content">
+        <div id="code_html"  class="tab-pane fade show active"><div class="editor" id="editor-HTML"></div></div>
+        <div id="code_css" class="tab-pane fade"><div class="editor" id="editor-CSS"></div></div>
+        <div id="code_js" class="tab-pane fade"><div class="editor" id="editor-JS"></div></div>
+      </div>
+    </div>
+     <div class="col-9 order-2" id="col9" style=" display: block;">
+        <iframe id="output"></iframe>
+     </div>
+    </div>
+                                      <!--    MAIN BODY CLOSE -->
+
+
+</body>
+</html>
+                                      <!--    SCRIPTS START -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.1/ace.js" type="text/javascript" charset="utf-8"> </script>
+<script type="text/javascript" src="java1.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                                      <!--    SCRIPTS CLOSE -->
+                                      <!--    MODAL START -->
+<div class="modal fade" id="Login/Signup">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">New or Existing User</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+       <center>
+       <div class="slmodal"><a data-toggle="modal" data-target="#LoginModal"><br>
+          <h5>Login</h5>
+          <p>For existing users.</p>
+        <br></a></div><hr>
+        <div class="slmodal"><a class="slmodal" data-toggle="modal" data-target="#Sign-upModal"><br>
+          <h5>Signup</h5>
+          <p>For new users.</p>
+        <br></a></div>
+        </center>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Existing User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email">
+    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" placeholder="Password">
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" >
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>             
+
+<div class="modal fade" id="Sign-upModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+    <label for="exampleInputEmail1">Full Name</label>
+    <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Full Name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
+    <small  class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" placeholder="Password">
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+                                      <!--    MODAL CLOSE -->
